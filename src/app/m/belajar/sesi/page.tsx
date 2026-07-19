@@ -223,7 +223,7 @@ export default function FlashcardSession() {
                     <p className="jp text-lg text-ink">{card.contoh}</p>
                     <p className="mt-1 text-xs text-ink-soft">{card.contohId}</p>
                   </div>
-                  <span className="mt-4 inline-block rounded-full bg-[#fbf1dd] px-3 py-1 text-[11px] font-semibold text-[#9a6b16]">
+                  <span className="mt-4 inline-block rounded-full bg-gold/15 px-3 py-1 text-[11px] font-semibold text-gold">
                     {card.group}
                   </span>
                   <p className="mt-5 flex items-center gap-1.5 text-xs text-ink-soft">

@@ -18,7 +18,7 @@ const items = [
 export function StudentBottomNav() {
   const path = usePathname();
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper pb-[env(safe-area-inset-bottom)] md:hidden">
+    <nav aria-label="Navigasi bawah" className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper pb-[env(safe-area-inset-bottom)] md:hidden">
       <div className="mx-auto flex max-w-md items-stretch justify-around px-2">
         {items.map((it) => {
           const active = path === it.href || (it.href !== "/m/dashboard" && path.startsWith(it.href));

@@ -1,21 +1,32 @@
 import { cn } from "@/lib/utils";
 
 const palette = [
-  "#2b3a67", // indigo
-  "#c8373a", // vermillion
-  "#e8b04b", // gold
-  "#3d4f82", // indigo tint
-  "#10b981", // success
-  "#5a6fa8", // indigo tint 2
-  "#9a6b16", // dark gold
-  "#b22f32", // dark vermillion
+  'bg-indigo', 'bg-vermillion', 'bg-gold',
+  'bg-indigo-tint', 'bg-success', 'bg-indigo-tint-2',
+  'bg-[#9a6b16]', 'bg-[#b22f32]'
 ];
 
-/** Deterministic color from a name string. */
+/** Map a CSS color class to its actual hex via getComputedStyle. */
+function cssColor(cls: string): string {
+  if (typeof document === "undefined") return "#2b3a67";
+  // Create a hidden element, apply the class, read computed bg
+  const el = document.createElement("div");
+  el.className = cls;
+  el.style.position = "absolute";
+  el.style.opacity = "0";
+  el.style.pointerEvents = "none";
+  document.body.appendChild(el);
+  const color = getComputedStyle(el).backgroundColor;
+  document.body.removeChild(el);
+  return color;
+}
+
+/** Deterministic color from a name string (returns hex). */
 export function colorFromName(name: string): string {
   let h = 0;
   for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
-  return palette[h % palette.length];
+  const cls = palette[h % palette.length];
+  return cssColor(cls);
 }
 
 function initials(name: string): string {
@@ -34,14 +45,17 @@ interface AvatarProps {
 
 export function Avatar({ name, size = 40, color, className, square }: AvatarProps) {
   const bg = color ?? colorFromName(name);
+  // If bg is a CSS class (starts with "bg-"), use it as className; otherwise fallback to inline style
+  const isClass = bg.startsWith("bg-");
   return (
     <div
       className={cn(
         "inline-flex items-center justify-center font-bold text-white shrink-0 select-none",
         square ? "rounded-card" : "rounded-full",
+        isClass && bg,
         className,
       )}
-      style={{ width: size, height: size, backgroundColor: bg, fontSize: size * 0.38 }}
+      style={{ width: size, height: size, backgroundColor: isClass ? undefined : bg, fontSize: size * 0.38 }}
       aria-label={name}
     >
       {initials(name)}

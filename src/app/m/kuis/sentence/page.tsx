@@ -59,7 +59,7 @@ function SortableChip({
       className="relative"
     >
       <span
-        className="jp flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-indigo to-indigo-tint pl-1.5 pr-3 py-2 text-sm font-semibold text-white shadow-soft-sm transition-all hover:from-vermillion hover:to-rose-500 active:scale-95 touch-none cursor-grab active:cursor-grabbing"
+        className="jp flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-indigo to-indigo-tint pl-1.5 pr-3 py-2 text-sm font-semibold text-white shadow-soft-sm transition-all hover:from-vermillion hover:to-vermillion-soft active:scale-95 touch-none cursor-grab active:cursor-grabbing"
         {...attributes}
         {...listeners}
       >
@@ -150,7 +150,7 @@ export default function SentenceBuilder() {
           <div className="relative flex-1">
             <div className="h-2 rounded-full bg-indigo-tint-soft overflow-hidden">
               <motion.div
-                className="h-full rounded-full bg-gradient-to-r from-vermillion to-rose-400"
+                className="h-full rounded-full bg-gradient-to-r from-vermillion to-vermillion-soft"
                 initial={{ width: "0%" }}
                 animate={{ width: "60%" }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}

@@ -22,6 +22,14 @@ export function Card({
           "transition-shadow duration-150 hover:shadow-soft-lg hover:ring-2 hover:ring-indigo/10 cursor-pointer",
         className,
       )}
+      role={interactive ? "button" : undefined}
+      tabIndex={interactive ? 0 : undefined}
+      onKeyDown={interactive ? (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          (props.onClick as React.MouseEventHandler<HTMLDivElement>)?.(e as unknown as React.MouseEvent<HTMLDivElement>);
+        }
+      } : undefined}
       {...props}
     >
       {children}

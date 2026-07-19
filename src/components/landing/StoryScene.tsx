@@ -109,7 +109,7 @@ export function StoryScene() {
 
             {/* Right: stat block with animated counters */}
             <div className="flex items-center">
-              <div className="w-full space-y-5 rounded-2xl border border-line bg-white/60 p-6 backdrop-blur-sm md:p-8">
+              <div className="w-full space-y-5 rounded-2xl border border-line bg-white/60 p-6 backdrop-blur-sm md:p-8 dark:bg-white/5">
                 {[
                   { label: "Jam belajar terkumpul", to: 1200, suffix: "+" },
                   { label: "Kosakata dikuasai", to: 800, suffix: "+" },

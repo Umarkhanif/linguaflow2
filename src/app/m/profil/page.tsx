@@ -24,6 +24,7 @@ import { Avatar } from "@/components/ui/Avatar";
 import { Button } from "@/components/ui/Button";
 import { AnimatedPage, staggerContainer, staggerItem } from "@/components/ui/AnimatedPage";
 import { BottomSheet } from "@/components/ui/BottomSheet";
+import { Input } from "@/components/ui/Input";
 import { useTheme } from "@/lib/theme";
 import { useLocalStorage } from "@/lib/use-local-storage";
 import { useProgress } from "@/lib/progress";
@@ -252,19 +253,11 @@ export default function Profil() {
           </div>
           <div>
             <label className="text-xs font-semibold text-ink-soft">Nama</label>
-            <input
-              value={draftName}
-              onChange={(e) => setDraftName(e.target.value)}
-              className="mt-1 w-full rounded-btn border border-line bg-warm-white px-3 py-2.5 text-sm text-ink outline-none focus:border-indigo/40 focus:ring-2 focus:ring-indigo/10"
-            />
+            <Input value={draftName} onChange={(e) => setDraftName(e.target.value)} placeholder="Nama" />
           </div>
           <div>
             <label className="text-xs font-semibold text-ink-soft">Kelas / Sekolah</label>
-            <input
-              value={draftSchool}
-              onChange={(e) => setDraftSchool(e.target.value)}
-              className="mt-1 w-full rounded-btn border border-line bg-warm-white px-3 py-2.5 text-sm text-ink outline-none focus:border-indigo/40 focus:ring-2 focus:ring-indigo/10"
-            />
+            <Input value={draftSchool} onChange={(e) => setDraftSchool(e.target.value)} placeholder="Kelas / Sekolah" />
           </div>
           <Button fullWidth size="lg" onClick={saveProfile}>
             {saved ? <Check size={18} /> : <UserIcon size={18} />} {saved ? "Tersimpan" : "Simpan Profil"}
@@ -275,12 +268,7 @@ export default function Profil() {
       <BottomSheet open={sheet === "password"} onClose={() => setSheet(null)} title="Ganti Password">
         <div className="space-y-3 pb-2">
           {["Password saat ini", "Password baru", "Konfirmasi password baru"].map((ph) => (
-            <input
-              key={ph}
-              type="password"
-              placeholder={ph}
-              className="w-full rounded-btn border border-line bg-warm-white px-3 py-2.5 text-sm text-ink outline-none focus:border-indigo/40 focus:ring-2 focus:ring-indigo/10"
-            />
+            <Input key={ph} type="password" placeholder={ph} />
           ))}
           <Button fullWidth size="lg" disabled className="opacity-60">
             <Shield size={18} /> Simpan (Segera Hadir)

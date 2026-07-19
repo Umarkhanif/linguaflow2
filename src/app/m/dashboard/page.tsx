@@ -184,7 +184,7 @@ export default function StudentDashboard() {
           <motion.section variants={staggerItem} className="mt-6">
             <h2 className="lf-section-rule mb-4 flex items-center gap-2 text-base font-bold text-ink">
               <Clock size={18} className="text-indigo" /> Tugas Pending
-              <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-bold text-[#9a6b16]">CONTOH</span>
+              <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-bold text-gold">CONTOH</span>
             </h2>
             <div className="space-y-3">
               {tasks.map((t, i) => (
@@ -224,7 +224,7 @@ export default function StudentDashboard() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.4 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <Link href={q.href}>
+                    <Link href={q.href} className="group">
                       <Card interactive className="flex flex-col items-start gap-2 h-full" padded>
                         <span className="flex h-10 w-10 items-center justify-center rounded-btn bg-indigo-tint-soft group-hover:bg-indigo-tint-soft/80 transition-colors">
                           <Icon size={20} className="text-indigo" />

@@ -25,9 +25,9 @@ export function AppJourney() {
             className="w-full"
           >
             {/* Study lesson card — looks like a real learning page */}
-            <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-xl">
+            <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-xl dark:bg-navy-soft/80">
               {/* lesson header */}
-              <div className="border-b border-line/60 bg-cream-deep/30 px-5 py-4">
+              <div className="border-b border-line/60 bg-cream-deep/30 px-5 py-4 dark:bg-white/5">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-ink-soft/50">
                   BAB 3 — KATA KERJA
                 </p>

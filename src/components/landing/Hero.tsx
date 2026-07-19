@@ -30,7 +30,7 @@ export function Hero() {
   return (
     <section aria-label="Hero" ref={ref} className="relative min-h-screen overflow-hidden bg-cream">
       {/* drifting kanji parallax */}
-      <motion.div style={{ y: yKanji }} className="pointer-events-none absolute inset-0">
+      <motion.div style={{ y: yKanji }} className="pointer-events-none absolute inset-0" aria-hidden="true">
         {drift.map((k, i) => (
           <span
             key={i}
@@ -111,7 +111,7 @@ export function Hero() {
 
         {/* Stats bar */}
         <motion.div
-          className="mt-10 flex items-center gap-8"
+          className="mt-10 flex flex-wrap items-center gap-4 md:gap-8"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: easeOut, delay: 1.0 }}

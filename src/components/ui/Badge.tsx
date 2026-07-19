@@ -4,13 +4,13 @@ import { type HTMLAttributes } from "react";
 type Tone = "indigo" | "vermillion" | "gold" | "success" | "error" | "neutral" | "soft";
 
 const tones: Record<Tone, string> = {
-  indigo: "bg-indigo-tint-soft text-indigo",
-  vermillion: "bg-[#fdeaea] text-vermillion",
-  gold: "bg-[#fbf1dd] text-[#9a6b16]",
-  success: "bg-[#e6f7f0] text-success",
-  error: "bg-[#fdeaea] text-error",
-  neutral: "bg-[#f2f2f2] text-ink-soft",
-  soft: "bg-indigo-tint-soft text-indigo-tint-2",
+  indigo: "bg-indigo-tint-soft/40 text-indigo-tint-2",
+  vermillion: "bg-vermillion/10 text-vermillion",
+  gold: "bg-gold/15 text-gold",
+  success: "bg-success/10 text-success",
+  error: "bg-error/10 text-error",
+  neutral: "bg-indigo-tint-soft/40 text-ink-soft",
+  soft: "bg-indigo-tint-soft/40 text-indigo-tint-2",
 };
 
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {

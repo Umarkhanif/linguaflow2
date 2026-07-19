@@ -45,7 +45,7 @@ export function SpeechScene() {
             </div>
 
             {/* waveform */}
-            <div className="mx-auto flex h-24 items-center justify-center gap-1.5">
+            <div className="mx-auto flex h-24 items-center justify-center gap-1.5" aria-hidden="true">
               {bars.map((_, i) => (
                 <div
                   key={i}

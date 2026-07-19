@@ -24,7 +24,7 @@ interface SidebarItem {
 }
 
 const studentItems: SidebarItem[] = [
-  { label: "Belajar", href: "/m/dashboard", icon: BookOpen },
+  { label: "Belajar", href: "/m/belajar", icon: BookOpen },
   { label: "Kuis", href: "/m/kuis", icon: ListChecks },
   { label: "Deck Latihan", href: "/m/deck", icon: Layers },
   { label: "Kamus", href: "/m/kamus", icon: BookText },

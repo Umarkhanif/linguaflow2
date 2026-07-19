@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Crown, Medal, TrendingUp, Flame } from "lucide-react";
+import { Crown, Medal, TrendingUp, Flame, Calendar } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { StudentShell } from "@/components/layout/StudentShell";
 import { Card } from "@/components/ui/Card";
 import { Avatar } from "@/components/ui/Avatar";
@@ -74,7 +75,7 @@ export default function Leaderboard() {
         <motion.div variants={staggerContainer} initial="initial" animate="animate">
           <motion.div variants={staggerItem}>
             <h1 className="text-2xl font-bold text-ink">Peringkat</h1>
-            <span className="ml-2 rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-bold text-[#9a6b16]">DEMO</span>
+            <span className="ml-2 rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-bold text-gold">DEMO</span>
           </motion.div>
 
           {/* Filter tabs */}
@@ -82,7 +83,7 @@ export default function Leaderboard() {
             {([
               { id: "kelas", label: "Kelas", icon: Medal },
               { id: "sekolah", label: "Sekolah", icon: TrendingUp },
-              { id: "mingguan", label: "Mingguan", icon: TrendingUp },
+              { id: "mingguan", label: "Mingguan", icon: Calendar },
             ] as { id: Filter; label: string; icon: any }[]).map((f) => {
               const active = filter === f.id;
               return (
@@ -92,12 +93,10 @@ export default function Leaderboard() {
                   aria-selected={active}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setFilter(f.id)}
-                  className={
-                    "flex flex-1 items-center justify-center gap-1.5 rounded-btn py-2.5 text-sm font-bold transition-colors cursor-pointer " +
-                    (active
-                      ? "bg-indigo text-white shadow-soft"
-                      : "bg-paper text-ink-soft border border-line hover:border-indigo/30")
-                  }
+                  className={cn(
+                    "flex flex-1 items-center justify-center gap-1.5 rounded-btn py-2.5 text-sm font-bold transition-colors cursor-pointer",
+                    active ? "bg-indigo text-white shadow-soft" : "bg-paper text-ink-soft border border-line hover:border-indigo/30",
+                  )}
                 >
                   <f.icon size={16} />
                   {f.label}

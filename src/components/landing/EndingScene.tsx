@@ -60,7 +60,7 @@ export function EndingScene() {
           </Link>
           <Link
             href="/login"
-            className="w-full rounded-full border border-line bg-white px-10 py-4 text-sm font-bold text-navy transition-all duration-300 hover:bg-navy/5 hover:border-navy/30 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 focus-visible:ring-offset-cream sm:w-auto"
+            className="w-full rounded-full border border-line bg-white px-10 py-4 text-sm font-bold text-navy transition-all duration-300 hover:bg-navy/5 hover:border-navy/30 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 focus-visible:ring-offset-cream sm:w-auto dark:bg-navy-soft/50 dark:border-white/10 dark:text-cream"
           >
             Masuk
           </Link>

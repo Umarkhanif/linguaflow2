@@ -16,7 +16,7 @@ export function LandingFooter() {
         <div className="flex gap-5 text-sm font-semibold text-ink-soft">
           <Link href="/login" className="hover:text-navy">Masuk</Link>
           <Link href="/register-sekolah" className="hover:text-navy">Daftar</Link>
-          <a href="#" className="hover:text-navy">Kontak</a>
+          <a href="/kontak" className="hover:text-navy">Kontak</a>
         </div>
       </div>
       <p className="pb-6 text-center text-xs text-ink-soft">© 2026 LinguaFlow · SMK Texar</p>

@@ -127,7 +127,7 @@ export default function DeckPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="absolute inset-0 bg-ink/50 backdrop-blur-sm" onClick={() => setStudyIdx(null)} />
+            <div className="absolute inset-0 bg-ink/50" onClick={() => setStudyIdx(null)} />
             <motion.div
               className="relative z-10 mx-auto mt-auto flex min-h-[70vh] w-full max-w-md flex-col rounded-t-card bg-paper p-5 pb-8 shadow-soft-lg"
               initial={{ y: "100%" }}

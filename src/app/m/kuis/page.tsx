@@ -72,9 +72,9 @@ function DeadlineBar({ deadline, pct = 60 }: { deadline: string; pct?: number })
         </span>
         <span className="text-ink-soft/50">{pct}% waktu terpakai</span>
       </div>
-      <div className="h-1 rounded-full bg-rose-100 overflow-hidden">
+      <div className="h-1 rounded-full bg-vermillion/15 overflow-hidden">
         <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-vermillion to-rose-400"
+          className="h-full rounded-full bg-gradient-to-r from-vermillion to-vermillion-soft"
           initial={{ width: 0 }}
           animate={{ width: `${pct}%` }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
@@ -102,7 +102,7 @@ function ChallengeCard({ icon: Icon, title, desc, iconColor, gradient }: {
       className="cursor-pointer rounded-card bg-paper border border-line p-4 shadow-soft transition-all hover:shadow-soft-lg active:scale-[0.98]"
     >
       <div className="flex items-center gap-4">
-        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${gradient.replace("opacity-10", "")} bg-opacity-15`}>
+        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${gradient}`}>
           <Icon size={22} className={iconColor} />
         </div>
         <div className="flex-1 min-w-0">
@@ -372,7 +372,7 @@ export default function KuisList() {
                     title="Mode Cepat"
                     desc="5 soal · tebak cepat 30 detik per soal"
                     iconColor="text-gold"
-                    gradient="bg-gradient-to-r from-gold to-amber-400"
+                    gradient="bg-gradient-to-r from-gold/15 to-amber-400/15"
                   />
 
                   <ChallengeCard
@@ -380,7 +380,7 @@ export default function KuisList() {
                     title="Tantangan Mingguan"
                     desc="Kumpulkan 100 poin · 3 hari lagi"
                     iconColor="text-success"
-                    gradient="bg-gradient-to-r from-success to-emerald-400"
+                    gradient="bg-gradient-to-r from-success/15 to-emerald-400/15"
                   />
 
                   {/* Motivational footer */}

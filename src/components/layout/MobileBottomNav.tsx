@@ -12,7 +12,7 @@ export function MobileBottomNav() {
   const tabs: SidebarItem[] = teacherItems.slice(0, 4);
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper/85 backdrop-blur-md md:hidden"
+    <nav aria-label="Navigasi bawah" className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper/85 backdrop-blur-md md:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
       <ul className="flex items-stretch">
         {tabs.map((it) => {

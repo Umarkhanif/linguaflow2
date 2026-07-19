@@ -78,7 +78,7 @@ export default function SenseiChat() {
   return (
     <StudentShell noHeader>
       {/* Full-height chat layout — fills the area between shell top padding and bottom-nav reserve */}
-      <div className="flex h-[calc(100dvh-5rem)] flex-col overflow-hidden -mb-12 md:-mb-28 md:h-[calc(100dvh-1.5rem)] md:mx-auto md:max-w-2xl">
+      <div className="flex h-[calc(100dvh-5rem)] flex-col overflow-hidden md:mx-auto md:max-w-2xl" style={{ paddingBottom: 0 }}>
         {/* ════════════════════════════════ */}
         {/* HEADER */}
         {/* ════════════════════════════════ */}
@@ -100,7 +100,7 @@ export default function SenseiChat() {
               <span className="inline-block h-1.5 w-1.5 rounded-full bg-success" />
               Online · Siap membantu
             </p>
-            <span className="ml-2 rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-bold text-[#9a6b16]">DEMO</span>
+            <span className="ml-2 rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-bold text-gold">DEMO</span>
           </div>
         </div>
 
@@ -142,7 +142,7 @@ export default function SenseiChat() {
                             ))}
                           </span>
                         ) : (
-                          <span className="jp">{m.text}</span>
+                          <span>{m.text}</span>
                         )}
                       </div>
                     </div>

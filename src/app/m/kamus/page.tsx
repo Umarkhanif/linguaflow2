@@ -71,18 +71,40 @@ export default function KamusList() {
         : a.arti.localeCompare(b.arti, "id"),
     );
 
+  function kanaGroup(kana: string): string {
+    const c = kana[0];
+    if ('あいうえおぁぃぅぇぉ'.includes(c)) return 'あ';
+    if ('かきくけこがぎぐげご'.includes(c)) return 'か';
+    if ('さしすせそざじずぜぞ'.includes(c)) return 'さ';
+    if ('たちつてとだぢづでど'.includes(c)) return 'た';
+    if ('なにぬねの'.includes(c)) return 'な';
+    if ('はひふへほばびぶべぼ'.includes(c)) return 'は';
+    if ('まみむめも'.includes(c)) return 'ま';
+    if ('やゆよゃゅょ'.includes(c)) return 'や';
+    if ('らりるれろ'.includes(c)) return 'ら';
+    if ('わをん'.includes(c)) return 'わ';
+    return c;
+  }
+
   const groups = filtered.reduce<Record<string, Word[]>>((acc, w) => {
-    const key = sortBy === "furigana" ? (w.furigana[0]?.toUpperCase() ?? "#") : w.arti[0]?.toUpperCase() ?? "#";
+    const key = sortBy === "furigana" ? kanaGroup(w.furigana) : w.arti[0]?.toUpperCase() ?? "#";
     (acc[key] ??= []).push(w);
     return acc;
   }, {});
 
-  // Lock body scroll when bottom sheet is open
+  // Lock body scroll when bottom sheet is open, preventing layout shift
   useEffect(() => {
-    if (selected) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "";
+    if (selected) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    }
     return () => {
       document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
     };
   }, [selected]);
 
@@ -367,7 +389,7 @@ export default function KamusList() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-24 left-1/2 z-50 -translate-x-1/2 rounded-full bg-indigo px-4 py-2 text-xs font-semibold text-white shadow-soft-lg"
+            className="fixed bottom-28 left-1/2 z-50 -translate-x-1/2 rounded-full bg-indigo px-4 py-2 text-xs font-semibold text-white shadow-soft-lg"
           >
             Ditambahkan ke Deck Latihan ({deck.length} kata)
           </motion.div>

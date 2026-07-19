@@ -27,6 +27,7 @@ export function ScrollHint() {
         strokeLinecap="round"
         strokeLinejoin="round"
         className="animate-bounce text-ink-soft/20"
+        aria-hidden="true"
       >
         <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
       </svg>

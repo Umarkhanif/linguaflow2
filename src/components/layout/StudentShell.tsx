@@ -56,9 +56,15 @@ export function StudentShell({
 
   return (
     <div className="min-h-screen bg-warm-white">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:z-[999] focus:top-4 focus:left-4 focus:rounded-btn focus:bg-indigo focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white focus:outline-none"
+      >
+        Langsung ke konten
+      </a>
       <StudentSidebar />
       {topBar}
-      <main id="main-content" className="mx-auto max-w-md px-4 pb-28 pt-4 md:ml-60 md:max-w-4xl md:px-6 md:pt-6">
+      <main id="main-content" className="mx-auto max-w-lg px-4 pb-20 pt-4 md:ml-60 md:max-w-4xl md:px-6 md:pt-6">
         {children}
       </main>
       <StudentBottomNav />

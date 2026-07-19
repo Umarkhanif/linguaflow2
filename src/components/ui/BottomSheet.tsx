@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
-import type { ReactNode } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 
 interface BottomSheetProps {
   open: boolean;
@@ -13,6 +13,16 @@ interface BottomSheetProps {
 
 /** Reusable bottom sheet — spring animation, matches the Kamus sheet style. */
 export function BottomSheet({ open, onClose, title, children }: BottomSheetProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (open) {
+      // Small timeout to let the animation start before focusing
+      const timer = setTimeout(() => containerRef.current?.focus(), 100);
+      return () => clearTimeout(timer);
+    }
+  }, [open]);
+
   return (
     <AnimatePresence>
       {open && (
@@ -25,7 +35,7 @@ export function BottomSheet({ open, onClose, title, children }: BottomSheetProps
         >
           {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-ink/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -34,7 +44,11 @@ export function BottomSheet({ open, onClose, title, children }: BottomSheetProps
 
           {/* Sheet */}
           <motion.div
-            className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-card bg-paper pb-8 shadow-soft-lg"
+            ref={containerRef}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            className="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-card bg-paper pb-8 shadow-soft-lg outline-none"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}

@@ -2,8 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { MessageCircle, Sparkles } from "lucide-react";
-import { viewportOnce } from "@/lib/motion";
+import { Sparkles } from "lucide-react";
 import { ScrollHint } from "@/components/landing/ScrollHint";
 
 /**
@@ -25,7 +24,7 @@ export function AISenseiDemo() {
         <div className="flex w-full max-w-2xl flex-1 flex-col items-center justify-center pb-8 md:pb-10">
           <motion.div
             style={{ x: xPanel, opacity: opPanel }}
-            className="w-full rounded-2xl border border-line bg-white p-6 shadow-xl md:p-8"
+            className="w-full rounded-2xl border border-line bg-white p-6 shadow-xl md:p-8 dark:bg-navy-soft/80"
           >
             {/* header */}
             <div className="mb-6 flex items-center gap-3">
@@ -57,7 +56,7 @@ export function AISenseiDemo() {
                 style={{ opacity: bubble2 }}
                 className="flex items-center gap-2"
               >
-                <div className="flex gap-1 rounded-2xl rounded-bl-md bg-cream-deep px-4 py-3">
+                <div className="flex gap-1 rounded-2xl rounded-bl-md bg-cream-deep px-4 py-3 dark:bg-white/10">
                   <span className="h-2 w-2 animate-bounce rounded-full bg-ink-soft/40 [animation-delay:0ms]" />
                   <span className="h-2 w-2 animate-bounce rounded-full bg-ink-soft/40 [animation-delay:150ms]" />
                   <span className="h-2 w-2 animate-bounce rounded-full bg-ink-soft/40 [animation-delay:300ms]" />

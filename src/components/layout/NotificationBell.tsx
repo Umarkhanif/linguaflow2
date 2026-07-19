@@ -55,7 +55,7 @@ export function NotificationBell({
                 className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-btn ${
                   n.tone === "vermillion"
                     ? "bg-vermillion/10 text-vermillion"
-                    : "bg-gold/10 text-[#9a6b16]"
+                    : "bg-gold/10 text-gold"
                 }`}
               >
                 <Bell size={16} />

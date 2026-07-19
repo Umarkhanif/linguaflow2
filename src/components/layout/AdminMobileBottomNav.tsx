@@ -13,6 +13,7 @@ export function AdminMobileBottomNav() {
 
   return (
     <nav
+      aria-label="Navigasi bawah"
       className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper/85 backdrop-blur-md md:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >

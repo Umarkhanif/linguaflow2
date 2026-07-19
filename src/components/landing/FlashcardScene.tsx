@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { viewportOnce } from "@/lib/motion";
 import { ScrollHint } from "@/components/landing/ScrollHint";
 
 /**
@@ -40,7 +39,7 @@ export function FlashcardScene() {
             >
               {/* front */}
               <div
-                className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl border border-line bg-white p-8 shadow-xl backface-hidden"
+                className="absolute inset-0 flex flex-col items-center justify-center rounded-3xl border border-line bg-white p-8 shadow-xl backface-hidden dark:bg-navy-soft/80"
                 style={{ backfaceVisibility: "hidden" }}
               >
                 <span lang="ja" className="jp-bold text-6xl text-navy md:text-7xl">食べる</span>

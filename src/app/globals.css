@@ -206,7 +206,6 @@ body {
 .lf-kanji {
   font-family: var(--font-jp);
   font-weight: 700;
-  color: var(--color-navy);
   opacity: 0.03;
   user-select: none;
   pointer-events: none;

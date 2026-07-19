@@ -147,7 +147,7 @@ export default function KuisSoal() {
           <div className="relative flex-1">
             <div className="h-2 rounded-full bg-indigo-tint-soft overflow-hidden">
               <motion.div
-                className="h-full rounded-full bg-gradient-to-r from-vermillion to-rose-400"
+                className="h-full rounded-full bg-gradient-to-r from-vermillion to-vermillion-soft"
                 initial={{ width: "0%" }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -159,7 +159,7 @@ export default function KuisSoal() {
                 <span
                   key={i}
                   className={`block h-1.5 w-1.5 rounded-full transition-colors duration-300 ${
-                    i <= currentIndex ? "bg-white" : "bg-indigo-tint-soft"
+                    i < currentIndex ? "bg-vermillion" : i === currentIndex ? "bg-vermillion/50" : "bg-indigo-tint-soft"
                   }`}
                 />
               ))}

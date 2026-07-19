@@ -220,12 +220,18 @@ export default function ChooseDeck() {
                       : c.color === "success"
                         ? "bg-success"
                         : "bg-indigo";
+                const iconColors: Record<string, string> = {
+                  indigo: "text-indigo",
+                  vermillion: "text-vermillion",
+                  gold: "text-gold",
+                  success: "text-success",
+                };
                 return (
                   <motion.div key={c.name} variants={staggerItem} custom={i}>
                     <Link href="/m/belajar/sesi">
                       <Card interactive padded>
                         <div className="flex items-start justify-between">
-                          <span className="flex h-10 w-10 items-center justify-center" style={{color: `var(--color-${c.color})`}}><c.icon size={24} /></span>
+                          <span className={"flex h-10 w-10 items-center justify-center " + iconColors[c.color]}><c.icon size={24} /></span>
                           <span className="rounded-full bg-indigo-tint-soft px-2 py-0.5 text-[10px] font-semibold text-indigo">
                             {c.done}/{c.total}
                           </span>

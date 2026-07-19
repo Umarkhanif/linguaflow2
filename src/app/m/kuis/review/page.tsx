@@ -114,7 +114,7 @@ export default function KuisReview() {
                   scoreColor === "success"
                     ? "bg-success/10 text-success"
                     : scoreColor === "gold"
-                      ? "bg-gold/10 text-[#9a6b16]"
+                      ? "bg-gold/10 text-gold"
                       : "bg-error/10 text-error"
                 }`}
               >
@@ -177,7 +177,7 @@ export default function KuisReview() {
                   </div>
                   <div className="mt-1.5 rounded-btn bg-indigo-tint-soft/50 px-3 py-2">
                     <p className="text-xs text-ink leading-relaxed">
-                      &ldquo;Bagus, tingkatkan hafalan partikel ya! &#x1f4aa;&rdquo;
+                      &ldquo;Bagus, tingkatkan hafalan partikel ya! <Sparkles size={14} className="inline" />&rdquo;
                     </p>
                   </div>
                   <p className="mt-1 text-[10px] text-ink-soft/60">
