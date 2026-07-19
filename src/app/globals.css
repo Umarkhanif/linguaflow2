@@ -1,26 +1,399 @@
 @import "tailwindcss";
 
+/* ============================================================
+   LinguaFlow Design Tokens
+   - Landing: Cream · Deep Navy · Japanese Red · Soft Gold (cinematic)
+   - App:     Indigo (Ai-iro) · Vermillion · Warm white (cozy Japanese)
+   ============================================================ */
+@theme {
+  /* Landing palette */
+  --color-cream: #fbf7f0;
+  --color-cream-deep: #f3ece0;
+  --color-navy: #12203a;
+  --color-navy-soft: #1c2f52;
+  --color-jp-red: #c8373a;
+  --color-gold: #d9a441;
+  --color-ink: #16110d;
+  --color-ink-soft: #6b6358;
+  --color-line: #e7ded0;
+
+  /* App palette */
+  --color-indigo: #2b3a67;
+  --color-indigo-tint: #3d4f82;
+  --color-indigo-tint-2: #5a6fa8;
+  --color-indigo-tint-soft: #eef1f8;
+  --color-vermillion: #c8373a;
+  --color-vermillion-soft: #fc5d5c;
+  --color-warm-white: #fbf9f5;
+  --color-paper: #ffffff;
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-gold-app: #e8b04b;
+
+  /* Radius */
+  --radius-card: 1.25rem;
+  --radius-btn: 0.75rem;
+
+  /* Shadow halus */
+  --shadow-soft: 0 4px 20px rgba(43, 58, 103, 0.08);
+  --shadow-soft-lg: 0 8px 30px rgba(43, 58, 103, 0.12);
+
+  /* Fonts */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-jp: var(--font-noto-jp), "Noto Sans JP", sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-noto-jp: "Noto Sans JP", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  /* Remove default tap highlight but we replace with custom focus-visible styles below */
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Custom focus ring for interactive elements — replaces removed tap highlight */
+:focus-visible {
+  outline: 2px solid var(--color-jp-red);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-warm-white);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+/* Japanese text rendering */
+.jp {
+  font-family: var(--font-jp);
+  font-weight: 500;
+}
+.jp-bold {
+  font-family: var(--font-jp);
+  font-weight: 700;
+}
+
+/* Kanji decorative background — very low opacity (landers) */
+.kanji-bg {
+  font-family: var(--font-jp);
+  font-weight: 700;
+  color: var(--color-navy);
+  opacity: 0.04;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Seigaiha wave motif — subtle */
+.seigaiha {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'%3E%3Cpath d='M0 20c5-8 15-8 20 0M20 20c5-8 15-8 20 0M-10 10c5-8 15-8 20 0M10 10c5-8 15-8 20 0M30 10c5-8 15-8 20 0' fill='none' stroke='%2312203a' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 40px 20px;
+  opacity: 0.06;
+}
+.seigaiha-navy {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'%3E%3Cpath d='M0 20c5-8 15-8 20 0M20 20c5-8 15-8 20 0M-10 10c5-8 15-8 20 0M10 10c5-8 15-8 20 0M30 10c5-8 15-8 20 0' fill='none' stroke='%23fbf7f0' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 40px 20px;
+  opacity: 0.06;
+}
+
+/* Paper texture — subtle noise grain for cream backgrounds */
+.bg-cream-paper {
+  background-color: var(--color-cream);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.035'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* Asanoha-ish faint grid for empty states */
+.asanoha {
+  background-image:
+    linear-gradient(60deg, rgba(43, 58, 103, 0.04) 1px, transparent 1px),
+    linear-gradient(-60deg, rgba(43, 58, 103, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Accent underline under headings (Japanese editorial touch) */
+.jp-rule::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 4px;
+  margin-top: 8px;
+  border-radius: 2px;
+  background-color: var(--color-jp-red);
+}
+
+/* Section rule — signature vermillion brushstroke under app section titles */
+.lf-section-rule {
+  position: relative;
+  display: inline-block;
+}
+.lf-section-rule::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 36px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--color-vermillion);
+}
+
+/* Display number — large, tight, bold stats that celebrate progress
+   (used for Kata / Streak / XP figures across student pages) */
+.lf-stat {
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--color-ink);
+}
+.lf-stat-indigo { color: var(--color-indigo); }
+.lf-stat-gold { color: var(--color-gold-app); }
+.lf-stat-vermillion { color: var(--color-vermillion); }
+
+/* Kanji watermark for empty states — large faint Japanese glyph, no mascot */
+.lf-kanji-watermark {
+  font-family: var(--font-jp);
+  font-weight: 700;
+  color: var(--color-indigo);
+  opacity: 0.05;
+  user-select: none;
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* Scrollbars inside panels */
+.thin-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: rgba(43, 58, 103, 0.2);
+  border-radius: 999px;
+}
+
+/* Hide scrollbar for horizontal chip rows */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================================
+   LinguaFlow Signature Elements
+   ============================================================ */
+
+/* The Vermillion Brushstroke — signature accent line */
+.lf-stroke {
+  display: block;
+  width: 0;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--color-jp-red);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lf-stroke.reveal {
+  width: 60px;
+}
+
+/* Kanji Watermark — background decorative text */
+.lf-kanji {
+  font-family: var(--font-jp);
+  font-weight: 700;
+  color: var(--color-navy);
+  opacity: 0.03;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+}
+
+/* Signature ending sequence — vermillion brushstroke */
+.lf-ending-line {
+  display: block;
+  width: 0;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--color-jp-red);
+  opacity: 0;
+  transform: translateY(16px);
+  animation: lf-ending-stroke-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+
+@keyframes lf-ending-stroke-in {
+  0% { opacity: 0; width: 0; transform: translateY(16px); }
+  100% { opacity: 1; width: 60px; transform: translateY(0); }
+}
+
+/* App mockup entrance (Scene 2) */
+.lf-laptop-enter {
+  animation: lf-laptop-rise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes lf-laptop-rise {
+  from { transform: translateY(80vh) rotateX(12deg); opacity: 0; }
+  to { transform: translateY(0) rotateX(0deg); opacity: 1; }
+}
+
+/* Chat bubble typing sequence */
+.lf-chat-bubble {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: lf-bubble-in 0.4s ease-out forwards;
+}
+.lf-chat-bubble:nth-child(1) { animation-delay: 0.3s; }
+.lf-chat-bubble:nth-child(2) { animation-delay: 1.6s; }
+.lf-chat-bubble:nth-child(3) { animation-delay: 1.9s; }
+
+@keyframes lf-bubble-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Waveform pulse for speech scene */
+.lf-waveform-bar {
+  animation: lf-waveform 1.2s ease-in-out infinite;
+}
+.lf-waveform-bar:nth-child(1) { animation-delay: 0s; }
+.lf-waveform-bar:nth-child(2) { animation-delay: 0.05s; }
+.lf-waveform-bar:nth-child(3) { animation-delay: 0.1s; }
+.lf-waveform-bar:nth-child(4) { animation-delay: 0.15s; }
+.lf-waveform-bar:nth-child(5) { animation-delay: 0.2s; }
+.lf-waveform-bar:nth-child(6) { animation-delay: 0.25s; }
+.lf-waveform-bar:nth-child(7) { animation-delay: 0.3s; }
+
+@keyframes lf-waveform {
+  0%, 100% { transform: scaleY(0.4); opacity: 0.6; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
+/* Score counter entrance */
+.lf-score-enter {
+  animation: lf-score-pop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  opacity: 0;
+}
+@keyframes lf-score-pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Impact number — single per screen */
+.lf-impact-number {
+  animation: lf-impact-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+@keyframes lf-impact-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ---- utility animations (app + lander shared) ---- */
+@keyframes float-up {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-float-up { animation: float-up 0.4s ease-out both; }
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  70% { transform: scale(1.25); opacity: 0; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
+.animate-pulse-ring { animation: pulse-ring 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+
+@keyframes typing-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+.animate-typing-dot { animation: typing-dot 1.2s infinite; }
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float-slow { animation: float-slow 5s ease-in-out infinite; }
+.animate-float-slower { animation: float-slow 7s ease-in-out infinite; }
+
+@keyframes drift {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.04; }
+  50% { opacity: 0.09; }
+  100% { transform: translateY(-40px) rotate(8deg); opacity: 0.04; }
+}
+.animate-drift { animation: drift 14s ease-in-out infinite; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 28s linear infinite; }
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+.tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+.tilt:hover { box-shadow: 0 18px 50px rgba(43, 58, 103, 0.18); }
+.tilt-inner { transform: translateZ(40px); }
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200, 55, 58, 0.0); }
+  50% { box-shadow: 0 10px 40px rgba(200, 55, 58, 0.22); }
+}
+.animate-glow { animation: glow-pulse 3.5s ease-in-out infinite; }
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ============================================================
+   Dark Mode (class-based)
+   ============================================================ */
+.dark {
+  --color-cream: #1a1816;
+  --color-cream-deep: #22201d;
+  --color-navy: #0d1628;
+  --color-navy-soft: #141f38;
+  --color-gold: #e8b04b;
+  --color-ink: #e8e4de;
+  --color-ink-soft: #8d877e;
+  --color-line: #2a2723;
+  --color-indigo: #6b82c4;
+  --color-indigo-tint: #5570b0;
+  --color-indigo-tint-2: #4861a0;
+  --color-indigo-tint-soft: #1e2238;
+  --color-vermillion: #d64a4d;
+  --color-vermillion-soft: #fc5d5c;
+  --color-warm-white: #121110;
+  --color-paper: #1c1a18;
+  --color-success: #34d399;
+  --color-error: #f87171;
+  --color-gold-app: #e8b04b;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-soft-lg: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+
+.dark .seigaiha {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'%3E%3Cpath d='M0 20c5-8 15-8 20 0M20 20c5-8 15-8 20 0M-10 10c5-8 15-8 20 0M10 10c5-8 15-8 20 0M30 10c5-8 15-8 20 0' fill='none' stroke='%23e8e4de' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+.dark body {
+  background-color: var(--color-warm-white);
+  color: var(--color-ink);
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

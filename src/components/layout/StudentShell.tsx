@@ -1,0 +1,67 @@
+import { Avatar } from "@/components/ui/Avatar";
+import { StudentBottomNav } from "@/components/layout/StudentBottomNav";
+import { StudentSidebar } from "@/components/layout/StudentSidebar";
+import { NotificationBell } from "@/components/layout/NotificationBell";
+
+/** Default greeting header — only used on dashboard */
+export function StudentTopBar({ name = "Ahmad Fauzi" }: { name?: string }) {
+  const first = name.split(" ")[0];
+  return (
+    <header className="sticky top-0 z-30 flex items-center justify-between border-b border-line bg-warm-white px-4 py-3 md:hidden">
+      <div className="flex items-center gap-2">
+        <Avatar name={name} size={36} />
+        <div>
+          <p className="text-xs text-ink-soft">Halo,</p>
+          <p className="text-sm font-bold text-ink leading-none">{first}</p>
+        </div>
+      </div>
+      <NotificationBell size={22} />
+    </header>
+  );
+}
+
+/** Simple title-only header — for pages with functional need */
+export function SimpleHeader({ title }: { title: string }) {
+  return (
+    <header className="sticky top-0 z-30 flex items-center justify-between border-b border-line bg-warm-white px-4 py-3 md:hidden">
+      <span className="text-base font-bold text-ink">{title}</span>
+      <NotificationBell size={20} />
+    </header>
+  );
+}
+
+export function StudentShell({
+  children,
+  name,
+  header,
+  title,
+  noHeader,
+}: {
+  children: React.ReactNode;
+  name?: string;
+  header?: React.ReactNode;
+  title?: string;
+  noHeader?: boolean;
+}) {
+  let topBar: React.ReactNode | null;
+  if (noHeader) {
+    topBar = null;
+  } else if (header) {
+    topBar = header;
+  } else if (title) {
+    topBar = <SimpleHeader title={title} />;
+  } else {
+    topBar = <StudentTopBar name={name} />;
+  }
+
+  return (
+    <div className="min-h-screen bg-warm-white">
+      <StudentSidebar />
+      {topBar}
+      <main id="main-content" className="mx-auto max-w-md px-4 pb-28 pt-4 md:ml-60 md:max-w-4xl md:px-6 md:pt-6">
+        {children}
+      </main>
+      <StudentBottomNav />
+    </div>
+  );
+}
